@@ -1,0 +1,69 @@
+{
+    "name": "sandrokeil/simdjson-php-polyfill",
+    "description": "Polyfill for the PHP extension simdjson",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Sandro Keil",
+            "homepage": "https://sandro-keil.de",
+            "role": "maintainer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/sandrokeil/simdjson-php-polyfill/issues",
+        "source": "https://github.com/sandrokeil/simdjson-php-polyfill"
+    },
+    "autoload": {
+        "psr-4": { "Simdjson\\": "src/" },
+        "files": [ "bootstrap.php" ]
+    },
+    "suggest": {
+        "ext-simdjson": "PHP extension for parsing gigabytes of JSON per second"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SimdjsonTest\\Polyfill\\": "test/"
+        }
+    },
+    "require": {
+        "php": "^7.3 || ^8.0",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "phpspec/prophecy-phpunit": "^2.0",
+        "phpstan/phpstan": "^0.12.33",
+        "phpstan/phpstan-strict-rules": "^0.12.4",
+        "phpunit/phpunit": "^9.2.6",
+        "prooph/php-cs-fixer-config": "^0.3",
+        "roave/security-advisories": "dev-master"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "check": [
+            "@cs",
+            "@analyse",
+            "@test"
+        ],
+        "cs": "php-cs-fixer fix src -v --diff --dry-run",
+        "cs-fix": "php-cs-fixer fix src -v --diff",
+        "test": "vendor/bin/phpunit",
+        "analyse": "php vendor/bin/phpstan.phar analyse --no-interaction"
+    },
+    "config": {
+        "sort-packages": true,
+        "platform": {
+        }
+    },
+    "archive": {
+        "exclude": [
+            ".coveralls.yml",
+            ".github",
+            "build",
+            "phpunit.xml*",
+            "phpstan.xml*",
+            "test"
+        ]
+    }
+}
